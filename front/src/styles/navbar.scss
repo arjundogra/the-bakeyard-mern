@@ -1,0 +1,22 @@
+.navbar{
+    display: flex;
+    // justify-content: space-between;
+    // width: 1440px;
+    width: 100vw;
+    align-items: center;
+    .navbarLeft{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .navbarCenter{
+        img{
+            // width: 180px;
+        }
+    }
+    .navbarRight{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+}
