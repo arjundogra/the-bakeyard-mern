@@ -9,6 +9,13 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Connection with Database
+const config = require("./config/default.json")
+const mongoose = require('mongoose');
+mongoose.connect(config.dbURI,{useNewUrlParser: true, useUnifiedTopology: true })
+.then(r=>console.log("Connected To Database"))
+.catch(e=>console.log(e))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
