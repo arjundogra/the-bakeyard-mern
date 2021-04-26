@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const users = require("../models/users");
+const config = require('../config/default.json')
 const jwt = require('jsonwebtoken');
 
 module.exports.signup = (req, res) => {
@@ -17,7 +18,7 @@ module.exports.signup = (req, res) => {
             User.password = hash
             User.save()
             .then(user=>{
-              jwt.sign({userId: user._id},"Secretkey",{ expiresIn: '1h' },(err,token)=>{
+              jwt.sign({userId: user._id},config.SecretKey,{ expiresIn: '1h' },(err,token)=>{
                 res.json({token,user})
               })
               console.log(user._id)
