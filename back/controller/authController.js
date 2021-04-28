@@ -35,7 +35,25 @@ module.exports.login = (req, res) => {
     if (!user) {
       res.send("User not existed");
     }
-    bcrypt.compare(password, user.password).then((r) => console.log(r));
-    res.send(user)
+    bcrypt.compare(password, user.password)
+    .then((r) => {
+      if (r){
+        jwt.sign({userId: user._id},config.SecretKey,{ expiresIn: '1h' },(err,token)=>{
+          res.json({token,user})
+        })
+      }
+      else{
+        res.status(400).json({"msg":"Incorrect Password"})
+      }
+    });
+  });
+};
+
+module.exports.getUser = (req, res) => {
+  // res.send(req.user.userId)
+  users.findOne({"_id": req.user.userId}).then((user) => {
+    delete user.password;
+    console.log(user)
+    res.json({"name": user.name, "email":user.email})
   });
 };
