@@ -1,6 +1,6 @@
-const Mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-const items = new Mongoose.Schema({
+const items = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -14,9 +14,9 @@ const items = new Mongoose.Schema({
     required: true,
   },
   date_added: {
-    type: Date.UTC,
+    type: Date,
     default: Date.now,
   },
 });
 
-module.exports('item',items)
+module.exports = mongoose.model('item',items)

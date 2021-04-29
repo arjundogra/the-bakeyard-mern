@@ -6,5 +6,5 @@ var auth = require('../middleware/auth')
 /* GET users listing. */
 router.post('/login', authController.login);
 router.post('/signup', authController.signup);
-router.get('/',auth,authController.getUser)
+router.get('/users',auth,authController.getUser);
 module.exports = router;
