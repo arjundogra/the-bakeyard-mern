@@ -1,4 +1,0 @@
-{
-    "dbURI":"mongodb+srv://arjundogra:arjundogra@cluster0.ina7r.mongodb.net/theBakeyard?retryWrites=true&w=majority",
-    "SecretKey": "theBakeyardSecretKey987654"
-}
