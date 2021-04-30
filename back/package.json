@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "client": "npm start --prefix ../front",
+    "dev": "concurrently \"nodemon ./bin/www\" \"npm run client \" "
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.0.2",
+    "config": "^3.3.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

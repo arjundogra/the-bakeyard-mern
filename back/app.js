@@ -11,9 +11,9 @@ var orderRouter = require('./routes/orders');
 var app = express();
 
 // Connection with Database
-const config = require("./config/default.json")
+const config = require('config')
 const mongoose = require('mongoose');
-mongoose.connect(config.dbURI,{useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.get('dbURI'),{useNewUrlParser: true, useUnifiedTopology: true })
 .then(r=>console.log("Connected To Database"))
 .catch(e=>console.log(e))
 

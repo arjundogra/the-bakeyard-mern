@@ -4,6 +4,6 @@ const itemController = require('../controller/itemController')
 
 router.get('/items',itemController.getItems);
 router.post('/items',itemController.addItem);
-router.delete('/item/:id',itemController.deleteItem);
+router.delete('/items/:itemId',itemController.deleteItem);
 
 module.exports = router;
