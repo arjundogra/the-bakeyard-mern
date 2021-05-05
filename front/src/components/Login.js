@@ -24,7 +24,7 @@ function Login() {
                     <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)}></input>
                     <input type="button" value="Submit" onClick={handleSubmit}></input>
                 </div>
-                <Link>Create New Account</Link>
+                <Link to="signup">Create New Account</Link>
             </div>
         </div>
     )
