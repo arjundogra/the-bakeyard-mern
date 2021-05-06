@@ -1,16 +1,17 @@
-const config = require('../config/default.json')
+const config = require('config')
 const jwt = require('jsonwebtoken')
 
-function auth(req,res,next){
+async function auth(req,res,next){
     const token = req.header('x-auth-token');
-    console.log(token)
-    if (!token){
+    if (token == null){
         res.status(401).json({
             "msg":"Token Not Found. Authentication Denied!!"
         })
     }
     try {
-        const res = jwt.verify(token,config.SecretKey)
+        console.log("RUN",config.get("SecretKey"),token)
+        const res = await jwt.verify(token,config.get("SecretKey"))
+        console.log(res)
         req.user = res
         next()
     } catch (error) {
