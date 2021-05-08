@@ -4,7 +4,7 @@ function Home(props) {
     return (
         <div className="home">
             <div className="banner">
-            {props.user ? <p>Welcome {props.user.name}</p> : "Not Autherized"}
+            {props.isLoggedIn ? <p>Welcome </p> : "Not Autherized"}
             </div>
         </div>
     )

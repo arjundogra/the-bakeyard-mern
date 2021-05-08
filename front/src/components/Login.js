@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-function Login() {
+function Login({handleLogIn}) {
+  const history = useHistory()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = () => {
     axios
-      .post("http://localhost:4000/login", {
+      .post("/login", {
         email: email,
         password: password,
       })
@@ -15,6 +16,8 @@ function Login() {
         const token = res.data.token;
         localStorage.setItem("token", token);
         console.log(res.data);
+        handleLogIn("A")
+        history.push('/')
       });
   };
   return (

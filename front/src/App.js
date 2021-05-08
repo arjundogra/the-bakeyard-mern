@@ -11,7 +11,14 @@ import React from "react";
 import axios from "axios";
 
 class App extends React.Component {
-  state = {user :null};
+  constructor(props){
+    super(props);
+    this.state = {
+      user: null,
+      isLoggedIn: false
+    }
+    this.handleLogIn = this.handleLogIn.bind(this)
+  }
   componentDidMount() {
     axios
       .get("/users", {
@@ -21,20 +28,31 @@ class App extends React.Component {
       })
       .then((r) => {
         console.log(r);
-        this.setState({
-          user: r.data,
-        });
+        // this.setState({
+        //   user: r.data,
+        //   isLoggedIn: true
+        // });
       })
       .catch((e) => console.log(e));
   }
+
+  handleLogIn = (data) =>{
+    console.log(data,"APP ")
+    this.setState({
+      user: data,
+      isLoggedIn: true
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
         <Router>
-          <Navbar />
+          <Navbar isLoggedIn={this.state.isLoggedIn} />
           <Switch>
             <Route path="/login">
-              <Login />
+              <Login handleLogIn={this.handleLogIn}/>
             </Route>
             <Route path="/signup">
               <Signup />
@@ -43,7 +61,7 @@ class App extends React.Component {
               <Gallery />
             </Route>
             <Route path="/">
-              <Home user={this.state.user}/>
+              <Home isLoggedIn={this.state.isLoggedIn}/>
             </Route>
           </Switch>
         </Router>
