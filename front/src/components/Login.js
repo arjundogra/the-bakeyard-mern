@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-function Login({handleLogIn}) {
-  const history = useHistory()
+function Login({ handleLogIn }) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = () => {
     axios
       .post("/login", {
@@ -16,10 +17,11 @@ function Login({handleLogIn}) {
         const token = res.data.token;
         localStorage.setItem("token", token);
         console.log(res.data);
-        handleLogIn("A")
-        history.push('/')
+        handleLogIn("A");
+        history.push("/");
       });
   };
+
   return (
     <div className="login">
       <div className="loginLeft">loginLeft</div>

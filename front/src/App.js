@@ -11,13 +11,14 @@ import React from "react";
 import axios from "axios";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       user: null,
-      isLoggedIn: false
-    }
-    this.handleLogIn = this.handleLogIn.bind(this)
+      isLoggedIn: false,
+    };
+    this.handleLogIn = this.handleLogIn.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
   componentDidMount() {
     axios
@@ -28,31 +29,42 @@ class App extends React.Component {
       })
       .then((r) => {
         console.log(r);
-        // this.setState({
-        //   user: r.data,
-        //   isLoggedIn: true
-        // });
+        this.setState({
+          user: r.data,
+          isLoggedIn: true,
+        });
       })
       .catch((e) => console.log(e));
   }
 
-  handleLogIn = (data) =>{
-    console.log(data,"APP ")
+  handleLogIn = (data) => {
+    console.log(data, "APP ");
     this.setState({
       user: data,
-      isLoggedIn: true
-    })
-  }
+      isLoggedIn: true,
+    });
+  };
 
+  handleLogOut = () => {
+    localStorage.removeItem("token");
+    this.setState({
+      user: null,
+      isLoggedIn: false,
+    });
+    console.log("Log Out Run");
+  };
 
   render() {
     return (
       <div className="App">
         <Router>
-          <Navbar isLoggedIn={this.state.isLoggedIn} />
+          <Navbar
+            isLoggedIn={this.state.isLoggedIn}
+            handleLogOut={this.handleLogOut}
+          />
           <Switch>
             <Route path="/login">
-              <Login handleLogIn={this.handleLogIn}/>
+              <Login handleLogIn={this.handleLogIn} />
             </Route>
             <Route path="/signup">
               <Signup />
@@ -61,7 +73,7 @@ class App extends React.Component {
               <Gallery />
             </Route>
             <Route path="/">
-              <Home isLoggedIn={this.state.isLoggedIn}/>
+              <Home isLoggedIn={this.state.isLoggedIn} />
             </Route>
           </Switch>
         </Router>
