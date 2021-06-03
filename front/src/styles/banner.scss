@@ -1,0 +1,54 @@
+.banner {
+  .fadeIn {
+    animation: EaseIn 2s;
+    -webkit-animation: EaseIn 2s;
+    -moz-animation: EaseIn 2s;
+    -o-animation: EaseIn 2s;
+    -ms-animation: EaseIn 2s;
+  }
+}
+
+@keyframes EaseIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes EaseIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes EaseIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes EaseIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes EaseIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
