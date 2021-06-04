@@ -3,20 +3,6 @@ import Banner from "../sComponents/banner";
 import Card from "../sComponents/Card";
 
 function Home(props) {
-  const [movies, setmovies] = useState([
-    { name: "Movie1", desc: "Short Movie", id: 1231412 },
-    { name: "Movie2", desc: "Romcom Movie", id: 12412 },
-    { name: "Movie3", desc: "Thriller Movie", id: 121412 },
-  ]);
-  const Cards = () => {
-    return (
-      <div className="cards">
-        {movies.map((movie) => (
-          <Card name={movie.name} desc={movie.desc} />
-        ))}
-      </div>
-    );
-  };
   return (
     <div className="home">
       <div className="banner">
@@ -27,7 +13,6 @@ function Home(props) {
         )}
       </div>
       {/* <Banner /> */}
-      <Cards />
       <svg
         width="810"
         height="689"

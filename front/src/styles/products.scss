@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+.productsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .products {
+    max-width: 1240px;
+    background-color: #dcebf1;
+    width: 100%;
+    .titleProducts {
+      text-align: center;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      letter-spacing: 0.1em;
+      color: #585353;
+      font-family: "Open Sans", sans-serif;
+    }
+    .allCards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

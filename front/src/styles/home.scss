@@ -1,9 +1,12 @@
-.home{
-    display: flex;
-    justify-content: center;
-    img{
-        // width: 1440px;
-        width: 100vw;
-        // margin-top: -60px;
-    }
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    // width: 1440px;
+    width: 100vw;
+    // margin-top: -60px;
+  }
 }

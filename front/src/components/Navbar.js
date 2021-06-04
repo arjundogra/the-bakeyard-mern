@@ -31,7 +31,8 @@ class Navbar extends React.Component {
           </div>
           <div className="navbarRight">
             <Link to="/">Home</Link>
-            <Link to="/gallery">Gallery</Link>
+            {/* <Link to="/gallery">Gallery</Link> */}
+            <Link to="/products">Products</Link>
             <Link to="/about">About</Link>
             <Link to="/gallery">Contact Us</Link>
             {this.props.isLoggedIn ? (

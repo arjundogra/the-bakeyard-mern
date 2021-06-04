@@ -6,6 +6,7 @@ function Login({ handleLogIn }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(true);
 
   const handleSubmit = () => {
     axios
@@ -22,28 +23,88 @@ function Login({ handleLogIn }) {
       });
   };
 
+  const LoginUser = () => {
+    return (
+      <div className="loginForm">
+        <h2>LOGIN</h2>
+        <input
+          type="email"
+          className="input"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+        <input
+          type="password"
+          className="input"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <input
+          className="loginBtn"
+          type="button"
+          value="Submit"
+          onClick={handleSubmit}
+        ></input>
+        <p>
+          Don’t have an account?{" "}
+          <Link onClick={() => setLogin(false)}>Sign Up Now!</Link>
+        </p>
+      </div>
+    );
+  };
+
+  const RegisterUser = () => {
+    return (
+      <div className="loginForm">
+        <h2>Create Account</h2>
+        <input type="email" className="input" placeholder="First Name"></input>
+        <input
+          type="email"
+          className="input"
+          placeholder="Last Name"
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+        <input
+          type="email"
+          className="input"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+        <input
+          type="password"
+          className="input"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <input
+          type="password"
+          className="input"
+          placeholder="Confirm Password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <input
+          className="loginBtn"
+          type="button"
+          value="Submit"
+          onClick={handleSubmit}
+        ></input>
+        <p>
+          Already have an account?{" "}
+          <Link onClick={() => setLogin(true)}>Sign In Now!</Link>
+        </p>
+      </div>
+    );
+  };
+
   return (
     <div className="login">
-      <div className="loginLeft">loginLeft</div>
-      <div className="loginRight">
-        <h2>login</h2>
-        <div className="loginWith">loginWith Gmail</div>
-        <div className="loginForm">
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <input type="button" value="Submit" onClick={handleSubmit}></input>
+      <div className="loginContainer">
+        <div className="loginLeft">
+          {login ? <LoginUser /> : <RegisterUser />}
         </div>
-        <Link to="signup">Create New Account</Link>
+        <div className="loginRight">
+          <img src="loginImg.png" />
+        </div>
       </div>
     </div>
   );

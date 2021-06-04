@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import React from "react";
 import axios from "axios";
+import Products from "./components/products";
 
 class App extends React.Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class App extends React.Component {
           <Switch>
             <Route path="/login">
               <Login handleLogIn={this.handleLogIn} />
+            </Route>
+            <Route path="/products">
+              <Products />
             </Route>
             <Route path="/signup">
               <Signup />
