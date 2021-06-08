@@ -4,10 +4,12 @@ import Home from "./components/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Gallery from "./components/Gallery";
 import Login from "./components/Login";
-import Signup from "./components/Signup";
+// import Signup from "./components/Signup";
 import React from "react";
 import axios from "axios";
 import Products from "./components/products";
+import Footer from "./components/Footer";
+import Cart from "./components/Cart";
 
 class App extends React.Component {
   constructor(props) {
@@ -57,27 +59,31 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Navbar
-            isLoggedIn={this.state.isLoggedIn}
-            handleLogOut={this.handleLogOut}
-          />
           <Switch>
             <Route path="/login">
+              <Navbar />
               <Login handleLogIn={this.handleLogIn} />
             </Route>
+            <Route path="/cart">
+              <Navbar />
+              <Cart />
+            </Route>
             <Route path="/products">
+              <Navbar />
               <Products />
             </Route>
-            <Route path="/signup">
+            {/* <Route path="/signup">
               <Signup />
-            </Route>
+            </Route> */}
             <Route path="/gallery">
               <Gallery />
             </Route>
             <Route path="/">
+              <Navbar />
               <Home isLoggedIn={this.state.isLoggedIn} />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </div>
     );

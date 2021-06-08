@@ -4,3 +4,16 @@ export const logIn = (user) => {
     payload: user,
   };
 };
+
+export const logOut = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
+
+export const addToCart = (item) => {
+  return {
+    type: "ADD_ITEM_TO_CART",
+    payload: item,
+  };
+};

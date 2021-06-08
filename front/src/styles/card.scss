@@ -88,6 +88,7 @@
   letter-spacing: 1px;
   color: #000;
   margin: 0;
+  font-size: 24px;
 }
 
 .cardContainer .card .contentBx .size,
@@ -138,33 +139,32 @@
   transition: 0.5s;
   color: #111;
   border-radius: 4px;
-  cursor: pointer;
 }
 
-.cardContainer .card .contentBx .size span:hover {
-  background: #29a9df;
-}
+// .cardContainer .card .contentBx .size span:hover {
+//   background: #29a9df;
+// }
 
-.cardContainer .card .contentBx .color span {
-  width: 20px;
-  height: 20px;
-  background: #ff0;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-}
+// .cardContainer .card .contentBx .color span {
+//   width: 20px;
+//   height: 20px;
+//   background: #ff0;
+//   border-radius: 50%;
+//   margin: 0 5px;
+//   cursor: pointer;
+// }
 
-.cardContainer .card .contentBx .color span:nth-child(2) {
-  background: #9bdc28;
-}
+// .cardContainer .card .contentBx .color span:nth-child(2) {
+//   background: #9bdc28;
+// }
 
-.cardContainer .card .contentBx .color span:nth-child(3) {
-  background: #03a9f4;
-}
+// .cardContainer .card .contentBx .color span:nth-child(3) {
+//   background: #03a9f4;
+// }
 
-.cardContainer .card .contentBx .color span:nth-child(4) {
-  background: #e91e63;
-}
+// .cardContainer .card .contentBx .color span:nth-child(4) {
+//   background: #e91e63;
+// }
 
 .cardContainer .card .contentBx a {
   display: inline-block;
@@ -177,12 +177,16 @@
   color: #111;
   opacity: 0;
   transform: translateY(50px);
-  transition: 0.5s;
+  transition: 0.3s;
   margin-top: 0;
+  cursor: pointer;
 }
 
+.cardContainer .card .contentBx a:hover {
+  background-color: rgba($color: #29a9df, $alpha: 0.3);
+}
 .cardContainer .card:hover .contentBx a {
   opacity: 1;
   transform: translateY(0px);
-  transition-delay: 0.75s;
+  transition-delay: 0.3s;
 }
