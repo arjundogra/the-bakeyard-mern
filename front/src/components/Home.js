@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Banner from "../sComponents/banner";
 import Card from "../sComponents/Card";
 
-function Home(props) {
+function Home() {
   return (
     <div className="home">
       <div className="homeContainer">
@@ -827,8 +828,18 @@ function Home(props) {
       >
         <h2>Our Products</h2>
         <div className="containerSecondCards">
-          <Card name="Chocolate Cake" img="1.png" price="999" key="1" />
-          <Card name="Chocolate Cake" img="2.png" price="799" key="2" />
+          <Card
+            name="Chocolate Cake"
+            img="1.png"
+            price={parseInt(999)}
+            key="1"
+          />
+          <Card
+            name="Chocolate Cake"
+            img="2.png"
+            price={parseInt(799)}
+            key="2"
+          />
         </div>
         <Link>View All</Link>
       </div>

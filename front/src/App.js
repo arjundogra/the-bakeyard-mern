@@ -10,8 +10,11 @@ import axios from "axios";
 import Products from "./components/products";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import { connect } from "react-redux";
+import { logIn } from "./actions/actions";
 
 class App extends React.Component {
+  // const dispatch = useDispatch()?
   constructor(props) {
     super(props);
     this.state = {
@@ -22,6 +25,7 @@ class App extends React.Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
   componentDidMount() {
+    console.log(this.props.a);
     axios
       .get("/users", {
         headers: {
@@ -30,6 +34,7 @@ class App extends React.Component {
       })
       .then((r) => {
         console.log(r);
+        this.props.addUser();
         this.setState({
           user: r.data,
           isLoggedIn: true,
@@ -59,17 +64,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
+          <Navbar />
           <Switch>
             <Route path="/login">
-              <Navbar />
               <Login handleLogIn={this.handleLogIn} />
             </Route>
             <Route path="/cart">
-              <Navbar />
               <Cart />
             </Route>
             <Route path="/products">
-              <Navbar />
               <Products />
             </Route>
             {/* <Route path="/signup">
@@ -79,7 +82,6 @@ class App extends React.Component {
               <Gallery />
             </Route>
             <Route path="/">
-              <Navbar />
               <Home isLoggedIn={this.state.isLoggedIn} />
             </Route>
           </Switch>
@@ -89,5 +91,15 @@ class App extends React.Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    a: state,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    addUser: () => dispatch(logIn()),
+  };
+}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

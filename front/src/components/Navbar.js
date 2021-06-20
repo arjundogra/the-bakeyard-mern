@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { logOut } from "../actions/actions";
 
-const Navbar = () => {
+const Navbar = ({ cart, userData }) => {
+  const history = useHistory();
   const user = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
+  // const cart = useSelector((state) => state.cart);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    console.log("RUN", cart);
+    setCartCount(cart.length);
+  }, [cart, cartCount, userData]);
+
   const dispatch = useDispatch();
-  console.log(cart);
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    history.push("/");
+    window.location.reload(false);
+  };
   return (
     <div className="navbar">
       <div className="navbarContainer">
@@ -21,18 +34,17 @@ const Navbar = () => {
           {/* <Link to="/about">About</Link>
             <Link to="/gallery">Contact Us</Link> */}
           {user.loggedIn ? (
-            <button className="btn" onClick={() => dispatch(logOut())}>
-              Log Out
-            </button>
+            // <button className="btn" onClick={() => dispatch(logOut())}>
+            //   Log Out
+            // </button>
+            <a onClick={handleLogOut}>Log Out</a>
           ) : (
-            <Link to="/login" className="btn">
-              Log In
-            </Link>
+            <Link to="/login">Log In</Link>
           )}
           <div className="cartLogo">
             <Link to="/cart">
               <img src="./cartLogo.png" />
-              <p>{cart?.length}</p>
+              <p>{cartCount}</p>
             </Link>
           </div>
         </div>
@@ -41,4 +53,11 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+    userData: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

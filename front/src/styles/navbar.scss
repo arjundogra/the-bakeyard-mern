@@ -43,18 +43,7 @@ $black: #000;
         letter-spacing: 0.2rem;
         padding: 15px 5px;
         margin: 0px 10px;
-        &:hover {
-          border-bottom: 1px solid $primary-color;
-          padding-bottom: -10px;
-        }
-      }
-      btn {
-        font-family: $font;
-        text-decoration: none;
-        color: $black;
-        letter-spacing: 0.2rem;
-        padding: 15px 5px;
-        margin: 0px 10px;
+        cursor: pointer;
         &:hover {
           border-bottom: 1px solid $primary-color;
           padding-bottom: -10px;
