@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../sComponents/Card";
 import { CAKEDATA } from "../data/cake";
+import Navbar from "./Navbar";
 
 function products() {
   const Cards = () => {
@@ -18,23 +19,15 @@ function products() {
     );
   };
   return (
-    <div className="productsContainer">
-      <div className="products">
-        <h2 className="titleProducts">All Products</h2>
-        {/* <div className="allCards"> */}
-        <Cards />
-        {/* <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card /> */}
-        {/* </div> */}
+    <>
+      <div className="productsContainer">
+        <div className="products">
+          <h2 className="titleProducts">All Products</h2>
+          {/* <div className="allCards"> */}
+          <Cards />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

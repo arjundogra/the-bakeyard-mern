@@ -14,7 +14,7 @@ const cart = new Mongoose.Schema({
         type: Number,
         required: true,
         min: [1, "Quantity can not be less then 1."],
-        deafult: 1,
+        default: 1,
       },
       price: Number,
     },
@@ -26,4 +26,4 @@ const cart = new Mongoose.Schema({
   },
 });
 
-module.exports = Mongoose.model("cart", cart)
+module.exports = Mongoose.model("cart", cart);
